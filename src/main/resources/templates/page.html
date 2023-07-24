@@ -6,7 +6,16 @@
     <title data-th-text="${title}"></title>
 </head>
 <body>
-    <h1 data-th-text="${title}"> Page 1</h1>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="#">page n°2</a></li>
+                <li><a href="#">page n°3</a></li>
+            </ul>
+        </nav>
+    </header>  
+    <h1 data-th-text="|Je suis la page 1 du ${title}|"></h1>
 
 </body>
 </html>
