@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class indexController {
@@ -20,7 +21,8 @@ public class indexController {
     }
      
     @PostMapping("/contact")
-    public String contactSend(){
+    public String contactSend( @RequestParam String name, @RequestParam String email, @RequestParam String message)
+    {
         return "contact/form.html";
     }
 }
