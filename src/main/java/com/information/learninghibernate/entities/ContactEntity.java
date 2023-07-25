@@ -14,7 +14,10 @@ import lombok.NoArgsConstructor;
 public class ContactEntity {
     private Integer id;
     @NotBlank(message="Le Nom et Prenom sont obligatoires")
-    @Pattern(regexp = "^[\\p{L}\\-]{4,100}$", flags = {Pattern.Flag.CASE_INSENSITIVE, Pattern.Flag.DOTALL})
+    @Pattern(regexp = "^[\\p{L}\\-]{4,100}$", 
+    flags = {Pattern.Flag.CASE_INSENSITIVE, Pattern.Flag.DOTALL},
+    message = "{contact.name.regex.message}"
+    )
     private String name;
     
     @NotBlank
