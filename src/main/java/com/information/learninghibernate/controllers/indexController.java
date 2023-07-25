@@ -1,5 +1,6 @@
 package com.information.learninghibernate.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -9,12 +10,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.information.learninghibernate.entities.ContactEntity;
+import com.services.ContactService;
 
 import jakarta.validation.Valid;
 
 @Controller
 public class indexController {
+    private final ContactService contactService;
 
+    @Autowired
+    public indexController(ContactService contactService) {
+        this.contactService = contactService;
+    }
     @GetMapping("/")
     public String index(Model model){
         model.addAttribute("title", "Learning Hibernate");
@@ -38,7 +45,7 @@ public class indexController {
             System.out.println(contactBinding);
              return "contact/form.html";
         }
-        System.out.println(contact);
+        contactService.save(contact);
         return "redirect:/";
     }
 }

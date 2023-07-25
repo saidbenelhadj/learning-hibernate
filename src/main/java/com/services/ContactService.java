@@ -9,7 +9,7 @@ import com.information.learninghibernate.reporitories.ContactRepository;
 @Service
 public class ContactService {
 
-    
+    @Autowired
     public ContactService(ContactRepository contactRepository) {
         this.contactRepository = contactRepository;
     }
