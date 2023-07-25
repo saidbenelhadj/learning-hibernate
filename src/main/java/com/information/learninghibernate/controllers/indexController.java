@@ -24,7 +24,8 @@ public class indexController {
     @GetMapping("/")
     public String index(Model model){
         model.addAttribute("title", "Learning Hibernate");
-        return "page.html";
+        model.addAttribute("contacts", contactService.findAll());
+        return "page";
     }
     @GetMapping("/contact")
     public String contact(Model model){
