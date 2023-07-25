@@ -28,9 +28,12 @@ public class indexController {
     }
      
     @PostMapping("/contact")
-    public String contactSend( @Valid @ModelAttribute(name="contact") ContactEntity contact, BindingResult contactBinding)
+    public String contactSend( 
+        @Valid @ModelAttribute(name="contact") ContactEntity contact, 
+        BindingResult contactBinding,
+        Model model
+        )
     {   
-
         if (contactBinding.hasErrors()) {
             System.out.println(contactBinding);
              return "contact/form.html";
