@@ -7,12 +7,15 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.information.learninghibernate.entities.ContactEntity;
 import com.information.learninghibernate.services.ContactService;
 
 import jakarta.validation.Valid;
+import jakarta.websocket.server.PathParam;
 
 @Controller
 public class indexController {
@@ -52,6 +55,19 @@ public class indexController {
             return "redirect:/form";
         }
         
+        return "redirect:/";
+    }
+    @GetMapping("/contact/{id}/delete")
+    public String contactDelete(@PathVariable Integer id,
+                                RedirectAttributes redirectAttributes) {
+        if (id != null) {
+            if (id > 0) {
+                contactService.deleteByid(id);
+                redirectAttributes.addFlashAttribute("message", "Le contact a bien été supprimé");
+            } else {
+                redirectAttributes.addFlashAttribute("message", "Je ne connais ce contact");
+            }
+        }
         return "redirect:/";
     }
 }
