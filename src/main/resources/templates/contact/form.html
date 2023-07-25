@@ -37,6 +37,7 @@
                     <label data-th-for="message">Message</label>
                     <div><textarea class="form-control" data-th-field="*{message}" cols="50" rows="10"></textarea></div>
                     <span data-th-if="${#fields.hasErrors('message')}" data-th-errorclass="error" data-th-errors="*{message}"></span>
+                    <span class="error" data-th-if="${emailError}" data-th-text="${emailError}"></span>
                 </div>
                 <div class="form-group">
                 <button type="submit" class="btn btn-primary"> Valider</button>

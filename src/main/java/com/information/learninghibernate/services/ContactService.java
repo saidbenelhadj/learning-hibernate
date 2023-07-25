@@ -1,4 +1,4 @@
-package com.services;
+package com.information.learninghibernate.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,12 +9,13 @@ import com.information.learninghibernate.reporitories.ContactRepository;
 @Service
 public class ContactService {
 
+    private final ContactRepository contactRepository;
+    
     @Autowired
     public ContactService(ContactRepository contactRepository) {
         this.contactRepository = contactRepository;
     }
-    private final ContactRepository contactRepository;
-
+    
     public Iterable<ContactEntity> findAll(){
         return contactRepository.findAll();
     }
